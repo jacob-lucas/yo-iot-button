@@ -1,14 +1,17 @@
 package com.jacoblucas.yo;
 
 import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
 
-public class LambdaRequestHandler {
+public class LambdaRequestHandler implements RequestHandler<IotButtonRequest, YoResponse> {
     /**
      * Handler for AWS Lambda code.
      * To set up who the Yo is sent from, change the 'apiKey' environment variable in the Lambda configuration.
      * To set up who the Yo is sent to, change the 'username' environment variable in the Lambda configuration.
      */
-    public YoResponse handleRequest(Context ctx) {
+    public YoResponse handleRequest(IotButtonRequest iotButtonRequest, Context ctx) {
+        System.out.println("Initiating Yo from: " + iotButtonRequest);
+
         String apiKey = System.getenv("apiKey");
         String username = System.getenv("username");
 

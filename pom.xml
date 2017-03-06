@@ -8,8 +8,28 @@
     <artifactId>yo-iot-button</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
+    <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -26,8 +46,11 @@
             <artifactId>joda-time</artifactId>
             <version>2.9.7</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-core</artifactId>
+            <version>1.1.0</version>
+        </dependency>
 
         <!-- Test Dependencies -->
         <dependency>
@@ -48,8 +71,6 @@
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
 </project>

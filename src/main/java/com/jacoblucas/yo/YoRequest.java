@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Builder
 @Data
-class Request {
+class YoRequest {
     private String apiKey;
     private String username;
 }

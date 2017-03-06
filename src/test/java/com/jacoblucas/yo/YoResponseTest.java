@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class SendResponseTest {
+public class YoResponseTest {
     @Test
     public void TestConstruction() {
         String json = "{\n" +
@@ -28,7 +28,7 @@ public class SendResponseTest {
                 "  \"yo_id\": \"58bc84ec403bb50490f63f84\"" +
                 "}";
 
-        SendResponse sr = new SendResponse(json);
+        YoResponse sr = new YoResponse(json);
 
         System.out.println(sr);
 

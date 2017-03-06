@@ -6,12 +6,12 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-class SendResponse {
+class YoResponse {
     private String yoId;
     private boolean success;
     private Recipient recipient;
 
-    SendResponse(@NonNull String json) {
+    YoResponse(@NonNull String json) {
         JsonObject obj = new JsonParser()
                 .parse(json)
                 .getAsJsonObject();

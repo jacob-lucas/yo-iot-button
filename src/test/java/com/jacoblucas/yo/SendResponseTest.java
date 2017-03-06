@@ -7,7 +7,6 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SendResponseTest {
-
     @Test
     public void TestConstruction() {
         String json = "{\n" +

@@ -6,6 +6,7 @@ import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
@@ -31,8 +32,24 @@ public class YoRequestSender {
         wr.flush();
         wr.close();
 
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
+        return parseResponse(con.getInputStream());
+    }
+
+    /**
+     * Issues a GET request for all the user's contacts. The user is identified by the provided access token.
+     * @param accessToken The access token representing the user.
+     * @return A List of all the user's contacts, or an empty list in case of error.
+     */
+    String getContacts(String url, String accessToken) throws IOException {
+        URL obj = new URL(url + "?access_token=" + accessToken);
+        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        con.setRequestMethod("GET");
+
+        return parseResponse(con.getInputStream());
+    }
+
+    private String parseResponse(InputStream is) throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(is));
         String inputLine;
         StringBuilder response = new StringBuilder();
 

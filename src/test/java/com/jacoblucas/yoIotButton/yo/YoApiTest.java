@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
 
-import static com.jacoblucas.yoIotButton.yo.Yo.YO_URL;
+import static com.jacoblucas.yoIotButton.yo.YoApi.YO_URL;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,7 +16,7 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class YoTest {
+public class YoApiTest {
     @Test
     public void TestSendYo() throws IOException {
         String json = "{\n" +
@@ -42,7 +42,7 @@ public class YoTest {
         YoRequest req = YoRequest.builder().apiKey("apiKey").username("JACOBLUCAS").build();
         when(yrs.postYoRequest(YO_URL + "yo/", req)).thenReturn(json);
 
-        YoResponse resp = Yo.sendYo(req, yrs);
+        YoResponse resp = YoApi.sendYo(req, yrs);
 
         assertThat(resp, notNullValue());
         assertThat(resp.getYoId(), is("58bc84ec403bb50490f63f84"));
@@ -159,7 +159,7 @@ public class YoTest {
         YoRequestSender mockYoRequestSender = mock(YoRequestSender.class);
         when(mockYoRequestSender.getContacts(anyString(), anyString())).thenReturn(json);
 
-        List<Contact> contacts = Yo.getContacts("myAccessToken", mockYoRequestSender);
+        List<Contact> contacts = YoApi.getContacts("myAccessToken", mockYoRequestSender);
 
         assertThat(contacts, notNullValue());
         assertThat(contacts.size(), is(9));

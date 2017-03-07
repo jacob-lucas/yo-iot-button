@@ -5,6 +5,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.jacoblucas.yoIotButton.model.IotButtonEvent;
 import com.jacoblucas.yoIotButton.model.YoResponse;
 import com.jacoblucas.yoIotButton.yo.ContextAwareYo;
+import com.jacoblucas.yoIotButton.yo.RandomUserYo;
 import com.jacoblucas.yoIotButton.yo.YoRequestSender;
 
 public class LambdaRequestHandler implements RequestHandler<IotButtonEvent, YoResponse> {
@@ -15,6 +16,14 @@ public class LambdaRequestHandler implements RequestHandler<IotButtonEvent, YoRe
      */
     public YoResponse handleRequest(IotButtonEvent iotButtonEvent, Context ctx) {
         System.out.println("Initiating Yo from: " + iotButtonEvent);
-        return (new ContextAwareYo()).yo(new YoRequestSender());
+
+        YoRequestSender yoRequestSender = new YoRequestSender();
+
+        if (iotButtonEvent.isSingleClick() || iotButtonEvent.isLongClick()) {
+            return new ContextAwareYo().yo(yoRequestSender);
+        } else {
+            // double click
+            return new RandomUserYo().yo(yoRequestSender);
+        }
     }
 }

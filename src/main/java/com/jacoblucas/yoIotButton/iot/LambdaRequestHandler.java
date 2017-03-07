@@ -19,10 +19,10 @@ public class LambdaRequestHandler implements RequestHandler<IotButtonEvent, YoRe
 
         YoRequestSender yoRequestSender = new YoRequestSender();
 
-        if (iotButtonEvent.isSingleClick() || iotButtonEvent.isLongClick()) {
+        if (iotButtonEvent.isSingleClick() || iotButtonEvent.isDoubleClick()) {
             return new ContextAwareYo().yo(yoRequestSender);
         } else {
-            // double click
+            // long click
             return new RandomUserYo().yo(yoRequestSender);
         }
     }

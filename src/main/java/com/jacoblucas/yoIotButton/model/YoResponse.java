@@ -15,8 +15,12 @@ public class YoResponse {
         JsonObject obj = new JsonParser()
                 .parse(json)
                 .getAsJsonObject();
-        yoId = obj.get("yo_id").getAsString();
+
         success = obj.get("success").getAsBoolean();
-        recipient = new Contact(obj.get("recipient").getAsJsonObject());
+
+        if (success) {
+            yoId = obj.get("yo_id").getAsString();
+            recipient = new Contact(obj.get("recipient").getAsJsonObject());
+        }
     }
 }

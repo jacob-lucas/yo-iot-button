@@ -34,18 +34,22 @@ public class YoTest {
                 "  \"yo_id\": \"58bc84ec403bb50490f63f84\"" +
                 "}";
 
-        final YoRequestSender yrs = mock(YoRequestSender.class);
+        YoRequestSender yrs = mock(YoRequestSender.class);
         final YoRequest req = YoRequest.builder().apiKey("apiKey").username("JACOBLUCAS").build();
         when(yrs.postYoRequest(Yo.YO_URL + "yo/", req)).thenReturn(json);
 
         Yo testYo = new Yo() {
             @Override
-            YoResponse yo() throws IOException {
-                return sendYo(req, yrs);
+            YoResponse yo(YoRequestSender yoRequestSender) {
+                try {
+                    return sendYo(req, yoRequestSender);
+                } catch (Exception e) {
+                    return null;
+                }
             }
         };
 
-        YoResponse resp = testYo.yo();
+        YoResponse resp = testYo.yo(yrs);
 
         assertThat(resp, notNullValue());
         assertThat(resp.getYoId(), is("58bc84ec403bb50490f63f84"));

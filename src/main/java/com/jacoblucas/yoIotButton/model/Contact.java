@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import lombok.Data;
 
 @Data
-class Contact {
+public class Contact {
     private String userId;
     private String username;
     private int yoCount;

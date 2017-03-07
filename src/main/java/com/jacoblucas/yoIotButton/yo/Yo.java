@@ -34,17 +34,17 @@ abstract class Yo {
      * Abstract function for derived classes to implement to send a Yo to a given user.
      * Implementations of the function should contain the API Key and username as part of the Yo request.
      * For example:
-     *     public YoResponse yo() throws IOException {
+     *     public YoResponse yo(YoRequestSender yoRequestSender) throws IOException {
      *         YoRequest sendRequest = YoRequest
      *             .builder()
      *             .apiKey("my-api-key")
      *             .username("JOE")
      *             .build();
-     *         return sendYo(sendRequest, new YoRequestSender());
+     *         return sendYo(sendRequest, yoRequestSender);
      *     }
+     * @param yoRequestSender The YoRequestSender used to send the Yo.
      * @return a YoResponse for the Yo!
-     * @throws IOException in case of error sending the Yo.
      */
-    abstract YoResponse yo() throws IOException;
+    abstract YoResponse yo(YoRequestSender yoRequestSender);
 
 }

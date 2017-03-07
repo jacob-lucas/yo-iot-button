@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-class YoRequestSender {
+public class YoRequestSender {
 
     /**
      * Post a Yo request.

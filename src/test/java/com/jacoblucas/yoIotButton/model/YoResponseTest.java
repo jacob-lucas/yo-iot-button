@@ -1,4 +1,4 @@
-package com.jacoblucas.yo;
+package com.jacoblucas.yoIotButton.model;
 
 import org.junit.Test;
 
@@ -36,7 +36,7 @@ public class YoResponseTest {
         assertThat(sr.isSuccess(), is(true));
         assertThat(sr.getRecipient(), notNullValue());
 
-        Recipient rec = sr.getRecipient();
+        Contact rec = sr.getRecipient();
         assertThat(rec.getUserId(), is("56fc2986f449500596d0d018"));
         assertThat(rec.getUsername(), is("JACOBLUCAS"));
         assertThat(rec.getYoCount(), is(507));

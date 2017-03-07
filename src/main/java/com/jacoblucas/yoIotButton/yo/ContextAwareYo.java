@@ -1,5 +1,7 @@
-package com.jacoblucas.yo;
+package com.jacoblucas.yoIotButton.yo;
 
+import com.jacoblucas.yoIotButton.model.YoRequest;
+import com.jacoblucas.yoIotButton.model.YoResponse;
 import lombok.Builder;
 
 import java.io.IOException;

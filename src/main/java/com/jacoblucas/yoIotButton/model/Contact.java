@@ -1,15 +1,15 @@
-package com.jacoblucas.yo;
+package com.jacoblucas.yoIotButton.model;
 
 import com.google.gson.JsonObject;
 import lombok.Data;
 
 @Data
-class Recipient {
+class Contact {
     private String userId;
     private String username;
     private int yoCount;
 
-    Recipient(JsonObject obj) {
+    Contact(JsonObject obj) {
         userId = obj.get("user_id").getAsString();
         username = obj.get("username").getAsString();
         yoCount = obj.get("yo_count").getAsInt();

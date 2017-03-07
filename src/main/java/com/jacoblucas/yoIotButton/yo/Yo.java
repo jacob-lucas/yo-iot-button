@@ -1,4 +1,7 @@
-package com.jacoblucas.yo;
+package com.jacoblucas.yoIotButton.yo;
+
+import com.jacoblucas.yoIotButton.model.YoRequest;
+import com.jacoblucas.yoIotButton.model.YoResponse;
 
 import java.io.IOException;
 
@@ -8,7 +11,7 @@ import java.io.IOException;
 abstract class Yo {
 
     // Current API for sending Yo requests
-    static String YO_URL = "https://api.justyo.co/yo/";
+    static String YO_URL = "https://api.justyo.co/";
 
     /**
      * Yo! Sends through a given YoRequest through a YoRequestSender.
@@ -18,7 +21,7 @@ abstract class Yo {
      * @throws IOException in case of error sending the Yo request.
      */
     YoResponse sendYo(YoRequest req, YoRequestSender yrs) throws IOException {
-        String response = yrs.post(YO_URL, req);
+        String response = yrs.postYoRequest(YO_URL + "yo/", req);
         YoResponse yoResponse = new YoResponse(response);
 
         System.out.println("Request  = " + req);

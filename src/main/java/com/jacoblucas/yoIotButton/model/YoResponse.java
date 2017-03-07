@@ -1,4 +1,4 @@
-package com.jacoblucas.yo;
+package com.jacoblucas.yoIotButton.model;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -6,17 +6,17 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-class YoResponse {
+public class YoResponse {
     private String yoId;
     private boolean success;
-    private Recipient recipient;
+    private Contact recipient;
 
-    YoResponse(@NonNull String json) {
+    public YoResponse(@NonNull String json) {
         JsonObject obj = new JsonParser()
                 .parse(json)
                 .getAsJsonObject();
         yoId = obj.get("yo_id").getAsString();
         success = obj.get("success").getAsBoolean();
-        recipient = new Recipient(obj.get("recipient").getAsJsonObject());
+        recipient = new Contact(obj.get("recipient").getAsJsonObject());
     }
 }

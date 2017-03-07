@@ -1,5 +1,7 @@
-package com.jacoblucas.yo;
+package com.jacoblucas.yoIotButton.yo;
 
+import com.jacoblucas.yoIotButton.model.YoRequest;
+import com.jacoblucas.yoIotButton.model.YoResponse;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -34,7 +36,7 @@ public class YoTest {
 
         final YoRequestSender yrs = mock(YoRequestSender.class);
         final YoRequest req = YoRequest.builder().apiKey("apiKey").username("JACOBLUCAS").build();
-        when(yrs.post(Yo.YO_URL, req)).thenReturn(json);
+        when(yrs.postYoRequest(Yo.YO_URL + "yo/", req)).thenReturn(json);
 
         Yo testYo = new Yo() {
             @Override

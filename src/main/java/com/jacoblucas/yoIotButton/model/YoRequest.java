@@ -1,11 +1,11 @@
-package com.jacoblucas.yo;
+package com.jacoblucas.yoIotButton.model;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Builder
 @Data
-class YoRequest {
+public class YoRequest {
     private String apiKey;
     private String username;
 }

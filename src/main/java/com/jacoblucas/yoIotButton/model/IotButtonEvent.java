@@ -1,9 +1,9 @@
-package com.jacoblucas.yo;
+package com.jacoblucas.yoIotButton.model;
 
 import lombok.Data;
 
 @Data
-class IotButtonEvent {
+public class IotButtonEvent {
     private String serialNumber;
     private String batteryVoltage;
     private String clickType;

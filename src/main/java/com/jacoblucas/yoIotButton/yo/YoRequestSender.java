@@ -1,4 +1,6 @@
-package com.jacoblucas.yo;
+package com.jacoblucas.yoIotButton.yo;
+
+import com.jacoblucas.yoIotButton.model.YoRequest;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
@@ -17,7 +19,7 @@ class YoRequestSender {
      * @return A String representation of the raw response.
      * @throws IOException in case of error posting the Yo request.
      */
-    String post(String url, YoRequest req) throws IOException {
+    String postYoRequest(String url, YoRequest req) throws IOException {
         URL obj = new URL(url);
         HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
